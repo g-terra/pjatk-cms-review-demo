@@ -51,11 +51,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   }
 }));
 
-export default function DarkModeSwitch({handleChange}) {
+export default function DarkModeSwitch({handleChange, active}) {
   return (
     <FormGroup>
-      <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} onChange={handleChange} />}
+      <FormControlLabel 
+        control={<MaterialUISwitch sx={{ m: 1 }} onChange={handleChange} checked={active} />}
       />
     </FormGroup>
   );

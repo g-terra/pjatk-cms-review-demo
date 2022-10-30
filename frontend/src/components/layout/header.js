@@ -29,7 +29,7 @@ export default function Header({ content }) {
                 variant="dense"
                 sx={{ justifyContent: 'center', overflowX: 'auto' }}
             >
-                {content.pages.map((page) => (
+                {content.pages.sort((a, b) => a.precedence_order > b.precedence_order ? 1 : -1).map((page) => (
                     <Button
                         color="inherit"
                         key={page.title}

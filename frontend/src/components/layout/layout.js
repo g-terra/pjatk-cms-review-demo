@@ -8,6 +8,7 @@ import Header from './header.js';
 import { LayoutContextProvider, useLayoutContext } from '../../context/layout.context.js';
 import Themes from '../utils/themes.js';
 import DarkModeWrapper from './darkModeWrapper.js';
+import UserAuth from './userAuth.js';
 
 
 export default function Layout({ children }) {
@@ -24,6 +25,7 @@ export default function Layout({ children }) {
 export function Content({ children }) {
 
     const context = useLayoutContext()
+    const router = useRouter()
 
     const [header, setHeader] = useState({
         title: "",
@@ -31,23 +33,22 @@ export function Content({ children }) {
     })
 
     useEffect(() => {
-
         if (context?.data?.header) {
-
             const data = {
                 title: context.data.header[0].Title,
                 pages: context.data.header[0].pages ,
             }
-
             setHeader(data)
         }
-
     }, [context])
 
     return (
         <DarkModeWrapper>
             <Container maxWidth="lg">
                 <Alert />
+                {
+                    !router.asPath.includes("/user/") && <UserAuth/>
+                }
                 <Header content={header} />
                 <Container sx={{
                     minHeight: '100vh',

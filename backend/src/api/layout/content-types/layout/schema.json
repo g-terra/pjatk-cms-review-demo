@@ -24,7 +24,9 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true,
+      "max": 1
     },
     "footer": {
       "type": "component",
@@ -34,7 +36,9 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true,
+      "max": 1
     }
   }
 }

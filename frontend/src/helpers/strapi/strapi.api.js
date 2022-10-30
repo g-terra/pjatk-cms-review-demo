@@ -29,12 +29,15 @@ const get = async (resource, search) => {
 const post = async (resource, payload) => {
 
     try {
-        const response = await axios.post(`${host}/${resource}`, payload)
+        const url = `${cmsProxy}${resource}`
+        console.log(`GET request sent to : ${url}`);
+        const response = await axios.post(url, payload)
         return {
             status: 200,
             value: await response.data
         }
     } catch (error) {
+        console.log(error);
 
         return {
             status: error.response.status,
