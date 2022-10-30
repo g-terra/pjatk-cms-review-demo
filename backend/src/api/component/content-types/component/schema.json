@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "components",
+  "info": {
+    "singularName": "component",
+    "pluralName": "components",
+    "displayName": "Component",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "pluginOptions": {}
+    },
+    "component_attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::component-attribute.component-attribute",
+      "mappedBy": "component"
+    }
+  }
+}
