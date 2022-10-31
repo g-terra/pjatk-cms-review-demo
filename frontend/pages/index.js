@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Layout from '../src/components/layout/layout'
+import { alertService } from '../src/services/alert.service'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -31,7 +32,7 @@ export function Index() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <Button onClick={() => router.push("/test")}>test</Button>
+        <Button onClick={() => alertService.success('Welcome!', { keepAfterRouteChange: true })}>test</Button>
 
         <p className={styles.description}>
           Get started by editing{' '}

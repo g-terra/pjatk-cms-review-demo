@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useEffectOnce } from '../hooks/useEffectOnce';
@@ -11,11 +12,13 @@ export function LayoutContextProvider({ children }) {
 
     const router = useRouter()
 
-    useEffect(() => {
-        layoutService.get(router.locale)
+    const session = useSession()
+
+    useEffectOnce(() => {  
+        layoutService.get(router.locale , session?.data?.jwt)
             .then((result) => setLayout(result))
             .catch((error) => console.log("An error occurred:" + error));
-    },[])
+    }, [session])
 
     return (
         <LayoutContext.Provider value={layout}>
@@ -24,13 +27,13 @@ export function LayoutContextProvider({ children }) {
     );
 }
 
-export function useLayoutContext(){
-    
+export function useLayoutContext() {
+
     const context = useContext(LayoutContext);
 
     if (context === undefined) {
-      throw new Error("useLayoutContext was used outside of its Provider");
+        throw new Error("useLayoutContext was used outside of its Provider");
     }
-  
+
     return context;
-  };
+};

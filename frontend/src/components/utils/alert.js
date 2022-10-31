@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
-import { Alert as MuiAlert } from '@mui/material';
+import { Alert as MuiAlert, Backdrop, Container } from '@mui/material';
 import { alertService } from '../../services/alert.service';
 export { Alert };
 
@@ -32,7 +32,7 @@ function Alert({ id, fade }) {
                     setAlerts(alerts => {
                         // filter out alerts without 'keepAfterRouteChange' flag
                         const filteredAlerts = alerts.filter(x => x.keepAfterRouteChange);
-                            
+
                         // remove 'keepAfterRouteChange' flag on the rest
                         return omit(filteredAlerts, 'keepAfterRouteChange');
                     });
@@ -82,22 +82,24 @@ function Alert({ id, fade }) {
             // remove alert after faded out
             setTimeout(() => {
                 setAlerts(alerts => alerts.filter(x => x.itemId !== alert.itemId));
-            }, 250);
+            }, 2500);
         } else {
             // remove alert
             setAlerts(alerts => alerts.filter(x => x.itemId !== alert.itemId));
         }
     };
 
-    
+
 
     if (!alerts.length) return null;
 
+
+
     return (
-        <div>
+        <Container >
             {alerts.map((alert, index) =>
-                <MuiAlert key={index} severity={alert.type} >{alert.message}</MuiAlert>
+                <MuiAlert sx={{ marginTop: '10px' }} key={index} severity={alert.type} >{alert.message}</MuiAlert>
             )}
-        </div>
+        </Container>
     );
 }

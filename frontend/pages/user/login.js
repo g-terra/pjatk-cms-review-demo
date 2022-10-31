@@ -27,10 +27,10 @@ export default function SignIn({ csrfToken }) {
     }
 
     const [locale, setLocale] = React.useState({})
-    
+
     const context = useAppLocaleContext()
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         setLocale(context)
     })
 
@@ -45,13 +45,15 @@ export default function SignIn({ csrfToken }) {
             password: data.get('password'),
             csrfToken: data.get('csrfToken'),
             callbackUrl: `${window.location.origin}`,
-        }).then(({ ok, error }) => {
+        }).then(({ ok }) => {
             if (ok) {
                 router.push("/")
             } else {
-                alertService.error(`Credentials do not match! ${error}`);
+                alertService.error(`Credentials do not match!`);
             }
-        })
+        }).catch(e => {
+            alertService.error(e);
+        });
 
     };
 

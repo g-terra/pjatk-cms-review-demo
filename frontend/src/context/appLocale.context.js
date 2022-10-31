@@ -11,7 +11,7 @@ export function AppLocaleContextProvider({ children }) {
 
     const router = useRouter()
 
-    useEffect(() => {
+    useEffectOnce(() => {
         layoutService.getComponentLocale(router.locale)
             .then((result) => setLocales(result))
             .catch((error) => console.log("An error occurred:" + error));
@@ -29,7 +29,7 @@ export function useAppLocaleContext(){
     const context = useContext(AppLocaleContext);
 
     if (context === undefined) {
-      throw new Error("useLayoutContext was used outside of its Provider");
+      throw new Error("useAppLocaleContext was used outside of its Provider");
     }
 
   

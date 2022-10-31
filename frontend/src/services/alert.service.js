@@ -32,6 +32,7 @@ function success(message, options) {
 }
 
 function error(message, options) {
+    console.log(message);
     alert({ ...options, type: AlertType.Error, message });
 }
 

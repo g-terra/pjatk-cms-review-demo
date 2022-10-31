@@ -7,6 +7,9 @@ const authenticate = async ({ email, password }) => {
         password
     })
 
+    console.log("auth response:" + JSON.stringify(response, null, 2));
+
+
     return response
 }
 
@@ -24,8 +27,27 @@ const register = async ({ username, email, password }) => {
     return response;
 }
 
+
+const info = async ({ token }) => {
+
+    const search = {
+        populate: "role"
+    }
+
+    const authHeader ={
+        headers: {
+            Authorization:
+              `Bearer ${token}`,
+          },
+    }
+
+    const response = await cms.provider.get(cms.endpoints.info, search , authHeader);
+
+    return response;
+}
+
 const userService ={
-    authenticate, register
+    authenticate, register , info
 }
 
 export default userService

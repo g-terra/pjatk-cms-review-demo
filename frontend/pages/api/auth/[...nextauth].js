@@ -27,7 +27,7 @@ export default NextAuth({
 
           if (res?.error) { throw Error(res.error) }
 
-          const { user, jwt } = res
+          const { user, jwt } = res.value
 
           return ({ user, jwt })
 
@@ -36,7 +36,6 @@ export default NextAuth({
         }
       },
     }),
-    // ...add more providers here
   ],
   secret: process.env.JWT_SECRET,
   pages: {

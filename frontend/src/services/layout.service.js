@@ -1,6 +1,6 @@
 import cms from "./cms.service"
 
-const get = async (locale) => {
+const get = async (locale, token) => {
 
     let search = {
         locale: locale,
@@ -11,8 +11,19 @@ const get = async (locale) => {
         }
     }
 
-    console.log(locale);
-    const response = await cms.provider.get(cms.endpoints.layout, search)
+    let authHeader = {}
+
+    if (token) {
+        authHeader = {
+            headers: {
+                Authorization:
+                    `Bearer ${token}`,
+            },
+        }
+    }
+
+
+    const response = await cms.provider.get(cms.endpoints.layout, search, authHeader)
 
     return response.value
 

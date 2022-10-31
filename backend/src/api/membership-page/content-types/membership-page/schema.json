@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "membership_pages",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
+    "singularName": "membership-page",
+    "pluralName": "membership-pages",
+    "displayName": "Membership Page",
     "description": ""
   },
   "options": {
@@ -42,8 +42,6 @@
     },
     "precedence_order": {
       "type": "integer",
-      "default": 0,
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true

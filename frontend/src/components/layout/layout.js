@@ -29,15 +29,19 @@ export function Content({ children }) {
 
     const [header, setHeader] = useState({
         title: "",
-        pages: []
+        pages: [],
+        membershipPages: []
     })
 
     useEffect(() => {
         if (context?.data?.header) {
             const data = {
                 title: context.data.header[0].Title,
-                pages: context.data.header[0].pages ,
+                pages: context.data.header[0].pages,
+                membershipPages: context.data.header[0].membership_pages,
             }
+
+
             setHeader(data)
         }
     }, [context])
@@ -45,9 +49,8 @@ export function Content({ children }) {
     return (
         <DarkModeWrapper>
             <Container maxWidth="lg">
-                <Alert />
                 {
-                    !router.asPath.includes("/user/") && <UserAuth/>
+                    !router.asPath.includes("/user/") && <UserAuth />
                 }
                 <Header content={header} />
                 <Container sx={{
