@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_landing_heroes",
+  "info": {
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post.post"
+    },
+    "link_text": {
+      "type": "string"
+    }
+  }
+}

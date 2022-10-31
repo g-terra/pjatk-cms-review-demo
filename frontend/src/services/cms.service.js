@@ -6,7 +6,8 @@ const endpoints = {
     info: "/users/me",
     layout: "/layout",
     components:"/components",
-    componentAttributes:"/component-attributes"
+    componentAttributes:"/component-attributes",
+    landing:"/landing"
 }
 
 const provider = strapiApi

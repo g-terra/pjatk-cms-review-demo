@@ -14,11 +14,13 @@ export function LayoutContextProvider({ children }) {
 
     const session = useSession()
 
-    useEffectOnce(() => {  
-        layoutService.get(router.locale , session?.data?.jwt)
-            .then((result) => setLayout(result))
-            .catch((error) => console.log("An error occurred:" + error));
-    }, [session])
+    useEffect(() => {
+        if (session.status !== 'loading') {
+            layoutService.get(router.locale, session?.data?.jwt)
+                .then((result) => setLayout(result))
+                .catch((error) => console.log("An error occurred:" + error));
+        }
+    }, [session.status])
 
     return (
         <LayoutContext.Provider value={layout}>

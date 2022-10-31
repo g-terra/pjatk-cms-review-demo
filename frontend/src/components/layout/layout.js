@@ -36,12 +36,10 @@ export function Content({ children }) {
     useEffect(() => {
         if (context?.data?.header) {
             const data = {
-                title: context.data.header[0].Title,
-                pages: context.data.header[0].pages,
-                membershipPages: context.data.header[0].membership_pages,
+                title: context.data.header.Title,
+                pages: context.data.header.pages,
+                membershipPages: context.data.header.membership_pages,
             }
-
-
             setHeader(data)
         }
     }, [context])

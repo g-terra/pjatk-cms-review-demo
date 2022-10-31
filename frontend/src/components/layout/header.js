@@ -15,14 +15,14 @@ export default function Header({ content }) {
 
 
     useEffect(() => {
+        
         if (session.status === 'authenticated') {
             userService.info({ token: session.data.jwt })
                 .then(res => {
-                    console.log(role);
                     setRole(res.value.role.type)
                 })
         }
-    }, [session])
+    }, [session.status])
 
 
     return (
