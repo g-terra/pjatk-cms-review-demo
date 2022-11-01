@@ -7,12 +7,13 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import componentLocales from '../../componentLocales';
 
-const CMS_RESOURCES= process.env.CMS_RESOURCES
+const CMS_RESOURCES = process.env.CMS_RESOURCES
 
 function MainFeaturedPost(props) {
 
-    const { post } = props;
+    const { post, locale } = props;
 
     const router = useRouter()
 
@@ -29,7 +30,6 @@ function MainFeaturedPost(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 backgroundImage: `url(${imgUrl})`,
-
             }}
         >
             {<img style={{ display: 'none' }} src={imgUrl} alt={post.content.image_text} />}
@@ -56,11 +56,17 @@ function MainFeaturedPost(props) {
                         <Typography component="h1" variant="h3" color="inherit" gutterBottom>
                             {post.content.title}
                         </Typography>
-                        <Typography variant="h5" color="inherit" paragraph>
+                        <Typography variant="h5" color="inherit" sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            display: '-webkit-box',
+                            WebkitLineClamp: '3',
+                            WebkitBoxOrient: 'vertical',
+                        }} paragraph>
                             {post.content.description}
                         </Typography>
-                        <Button variant='outlined' onClick={() => { router.push(`/posts/${post.content.slug}`)}}>
-                            {post.link_text}
+                        <Button variant='outlined' onClick={() => { router.push(`/posts/${post.content.slug}`) }}>
+                            {locale[componentLocales.post.main.label.more]}
                         </Button>
                     </Box>
                 </Grid>

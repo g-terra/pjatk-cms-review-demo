@@ -17,7 +17,9 @@ const get = async (locale) => {
                         ],
                         populate: {
                             image: {
-                                populate: '*'
+                                fields: [
+                                    "formats"            
+                                ],
                             }
                         }
                     }
@@ -30,8 +32,16 @@ const get = async (locale) => {
                             "title",
                             "description",
                             "image_text",
+                            "createdAt",
                             "slug"
-                        ]
+                        ],
+                        populate: {
+                            image: {
+                                fields: [
+                                    "formats"            
+                                ],
+                            }
+                        }
                     }
                 }
             },

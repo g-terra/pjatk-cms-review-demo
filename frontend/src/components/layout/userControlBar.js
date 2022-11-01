@@ -1,20 +1,23 @@
 import { ThemeProvider } from "@emotion/react"
-import { CssBaseline, Grid } from "@mui/material"
+import { Container, CssBaseline, Grid } from "@mui/material"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import DarkModeSwitch from "../utils/darkModeSwitch"
 import Themes from "../utils/themes"
+import UserAuth from "./userAuth"
 
-export default function DarkModeWrapper({ children }) {
+export default function UserControlBar({ children }) {
     const [theme, setTheme] = useState(Themes.light)
 
     const [darkMode, setDarkMode] = useState(false)
 
+    const router = useRouter()
 
     useEffect(() => {
         if (localStorage.getItem('darkMode') === 'true') {
             setTheme(Themes.dark)
             setDarkMode(true)
-        } else{
+        } else {
             setTheme(Themes.light)
             setDarkMode(false)
         }
@@ -36,7 +39,10 @@ export default function DarkModeWrapper({ children }) {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Grid container justifyContent="space-between" sx={{ p: '1em' }}>
-                <DarkModeSwitch handleChange={handleChange} active={darkMode}/>
+                <DarkModeSwitch handleChange={handleChange} active={darkMode} />
+                {
+                    !router.asPath.includes("/user/") && <UserAuth />
+                }
             </Grid>
             {children}
         </ThemeProvider>

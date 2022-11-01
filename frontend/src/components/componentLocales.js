@@ -7,7 +7,7 @@ const componentLocales = {
     },
     label:{
        already_have_account:"label.already_have_account",
-       dont_have_account:"label.dont_have_account"
+       dont_have_account:"label.dont_have_account",
     },
     pages:{
         signIn:{
@@ -15,6 +15,18 @@ const componentLocales = {
         },
         signUp:{
             title:"pages.signup.title"
+        }
+    },
+    post:{
+        main:{
+            label:{
+                more: "post.main.label.more"
+            }
+        },
+        featured:{
+            label:{
+                more: "post.featured.label.more"
+            }
         }
     }
 }

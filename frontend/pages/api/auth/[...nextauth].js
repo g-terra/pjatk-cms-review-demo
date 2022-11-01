@@ -14,7 +14,6 @@ export default NextAuth({
       credentials: {
         email: { label: 'email', type: 'text' },
         password: { label: 'Password', type: 'password' },
-
       },
       async authorize(credentials, req) {
         try {
@@ -42,20 +41,18 @@ export default NextAuth({
     signIn: '/user/login',
   },
   callbacks: {
-    session: async ({ session, token, user }) => {
+    session: ({ session, token }) => {
       session.id = token.id;
       session.jwt = token.jwt;
-
-      return Promise.resolve(token);
+      return token;
     },
-    jwt: async ({ token, user }) => {
-      const isSignIn = user ? true : false;
-      if (isSignIn) {
+    jwt: ({ token, user }) => {
+      if (Boolean(user)) {
         token.id = user.id;
         token.jwt = user.jwt;
         token.user = user.user
       }
-      return Promise.resolve(token);
+      return token;
     },
   },
 

@@ -12,8 +12,6 @@ export default function Header({ content }) {
     const session = useSession()
     const [role, setRole] = useState({})
 
-
-
     useEffect(() => {
         
         if (session.status === 'authenticated') {
@@ -38,7 +36,6 @@ export default function Header({ content }) {
                 >
                     {content.title}
                 </Typography>
-
             </Toolbar>
             <Toolbar
                 component="nav"
@@ -47,7 +44,6 @@ export default function Header({ content }) {
             >
                 {getHeaderButtons(content.pages, router)}
                 {role === 'membership' && getHeaderButtons(content.membershipPages, router)}
-
             </Toolbar>
         </>
     );

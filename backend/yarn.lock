@@ -1365,6 +1365,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
+"@notum-cz/strapi-plugin-content-versioning@^0.4.4":
+  "integrity" "sha512-xJOyuayTKv6BO0Fd/e3601RUCZ0z1HCeZvrovvKMypYa6L0b7StP/ITSitJ4FL/Dc6aAKCeOPDgEs2YQHSBIVw=="
+  "resolved" "https://registry.npmjs.org/@notum-cz/strapi-plugin-content-versioning/-/strapi-plugin-content-versioning-0.4.4.tgz"
+  "version" "0.4.4"
+  dependencies:
+    "@strapi/utils" "^4.0.0"
+    "lodash" "^4.17.21"
+    "uuid" "^8.3.2"
+
 "@pmmmwh/react-refresh-webpack-plugin@0.5.7":
   "integrity" "sha512-bcKCAzF0DV2IIROp9ZHkRJa6O4jy7NlnHdWL3GmcUxYWNjLXkK5kfELELwEfSP5hXPfVL/qOGMAROuMQb9GG8Q=="
   "resolved" "https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.7.tgz"
@@ -1821,7 +1830,7 @@
     "@strapi/utils" "4.4.5"
     "fs-extra" "10.0.0"
 
-"@strapi/strapi@^4.0.7", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.4.5":
+"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.0.7", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.4.5":
   "integrity" "sha512-2mEEOPBq7xBfCN1NZF/OAEQqY18eDxQ9NwcRfz460rbg+XK3cgzO2Wjx4hla97E/UCXHRHRIELtnEwtSCfotJg=="
   "resolved" "https://registry.npmjs.org/@strapi/strapi/-/strapi-4.4.5.tgz"
   "version" "4.4.5"
@@ -1892,7 +1901,7 @@
     "prettier" "2.7.1"
     "typescript" "4.6.2"
 
-"@strapi/utils@4.4.5":
+"@strapi/utils@^4.0.0", "@strapi/utils@4.4.5":
   "integrity" "sha512-JloHkrDJgn0ddIwI3HSMFxgDe/fD6m+khq8XIrN8ixOxJSYS5jlWysGQleSdbjzp4s3ADHIL+ovAeBuIiwd3Rw=="
   "resolved" "https://registry.npmjs.org/@strapi/utils/-/utils-4.4.5.tgz"
   "version" "4.4.5"

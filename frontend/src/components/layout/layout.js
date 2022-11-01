@@ -6,9 +6,7 @@ import { useRouter } from 'next/router';
 import { Alert } from '../utils/alert.js';
 import Header from './header.js';
 import { LayoutContextProvider, useLayoutContext } from '../../context/layout.context.js';
-import Themes from '../utils/themes.js';
-import DarkModeWrapper from './darkModeWrapper.js';
-import UserAuth from './userAuth.js';
+import UserControlBar from './userControlBar.js';
 
 
 export default function Layout({ children }) {
@@ -45,11 +43,8 @@ export function Content({ children }) {
     }, [context])
 
     return (
-        <DarkModeWrapper>
-            <Container maxWidth="lg">
-                {
-                    !router.asPath.includes("/user/") && <UserAuth />
-                }
+        <Container maxWidth="lg">
+            <UserControlBar>
                 <Header content={header} />
                 <Container sx={{
                     minHeight: '100vh',
@@ -59,7 +54,7 @@ export function Content({ children }) {
                 }}>
                     {children}
                 </Container>
-            </Container>
-        </DarkModeWrapper>
+            </UserControlBar>
+        </Container>
     )
 }

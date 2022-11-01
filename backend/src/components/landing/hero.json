@@ -10,9 +10,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::post.post"
-    },
-    "link_text": {
-      "type": "string"
     }
   }
 }
