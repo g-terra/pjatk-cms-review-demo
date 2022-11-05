@@ -13,7 +13,6 @@ export default function Header({ content }) {
     const [role, setRole] = useState({})
 
     useEffect(() => {
-        
         if (session.status === 'authenticated') {
             userService.info({ token: session.data.jwt })
                 .then(res => {

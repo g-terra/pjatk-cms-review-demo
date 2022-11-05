@@ -8,14 +8,18 @@ import Image from 'next/image';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import componentLocales from '../../componentLocales';
+import { useAppLocaleContext } from '../../../context/appLocale.context';
 
 const CMS_RESOURCES = process.env.CMS_RESOURCES
 
 function MainFeaturedPost(props) {
 
-    const { post, locale } = props;
+    const { post } = props;
 
     const router = useRouter()
+
+    const context = useAppLocaleContext()
+
 
     const imgUrl = `${CMS_RESOURCES}${post.content.image.formats.large.url}`
 
@@ -30,6 +34,7 @@ function MainFeaturedPost(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 backgroundImage: `url(${imgUrl})`,
+                height: 300
             }}
         >
             {<img style={{ display: 'none' }} src={imgUrl} alt={post.content.image_text} />}
@@ -66,7 +71,7 @@ function MainFeaturedPost(props) {
                             {post.content.description}
                         </Typography>
                         <Button variant='outlined' onClick={() => { router.push(`/posts/${post.content.slug}`) }}>
-                            {locale[componentLocales.post.main.label.more]}
+                            {context.locale[componentLocales.post.main.label.more]}
                         </Button>
                     </Box>
                 </Grid>

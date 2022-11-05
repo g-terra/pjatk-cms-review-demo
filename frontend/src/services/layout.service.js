@@ -7,8 +7,26 @@ const get = async (locale, token) => {
         populate: {
             header: {
                 populate: '*'
+            },
+            footer: {
+                populate: {
+                    social: {
+                        populate: {
+                            icon_light: {
+                                fields: ['formats'],
+                            },
+                            icon_dark: {
+                                fields: ['formats'],
+                            }
+                        }
+                    },
+                    pages: {
+                        fields:['title','path']
+                    }
+                }, 
             }
         }
+     
     }
 
     let authHeader = {}
@@ -53,8 +71,17 @@ const getCoreComponentLocale = async (locale) => {
 
 }
 
+const getAvailableLocales = async()=>{
+
+    const response = await cms.provider.get(cms.endpoints.locales)
+    if (response.status !== 200) return response
+
+    return response.value.map(l=>l.code)
+
+}
+
 const layoutService = {
-    get, getComponentLocale: getCoreComponentLocale
+    get, getComponentLocale: getCoreComponentLocale , getAvailableLocales
 }
 
 export default layoutService

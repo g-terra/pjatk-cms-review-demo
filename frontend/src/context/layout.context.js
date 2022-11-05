@@ -20,7 +20,7 @@ export function LayoutContextProvider({ children }) {
                 .then((result) => setLayout(result))
                 .catch((error) => console.log("An error occurred:" + error));
         }
-    }, [session.status])
+    }, [session.status, router.locale])
 
     return (
         <LayoutContext.Provider value={layout}>

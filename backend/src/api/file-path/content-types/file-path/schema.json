@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "file_paths",
+  "info": {
+    "singularName": "file-path",
+    "pluralName": "file-paths",
+    "displayName": "file path"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "path": {
+      "type": "string",
+      "regex": "^([\\/]{1}[a-z0-9]+)+(\\/?){1}$|^([\\/]{1})$",
+      "unique": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "user_available_file": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-available-file.user-available-file",
+      "inversedBy": "file_paths"
+    }
+  }
+}

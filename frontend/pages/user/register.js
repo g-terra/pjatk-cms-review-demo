@@ -27,7 +27,7 @@ export default function SignUp() {
 
 
     React.useEffect(() => {
-        setLocale(context)
+        setLocale(context.locale)
     })
 
 

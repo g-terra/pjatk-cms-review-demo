@@ -1,8 +1,9 @@
-import { ThemeProvider } from "@emotion/react"
-import { Container, CssBaseline, Grid } from "@mui/material"
+import { Button, Container, CssBaseline, Grid, ThemeProvider } from "@mui/material"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { useAppLocaleContext } from "../../context/appLocale.context"
 import DarkModeSwitch from "../utils/darkModeSwitch"
+import LanguageSwitcher from "../utils/languageSwitcher"
 import Themes from "../utils/themes"
 import UserAuth from "./userAuth"
 
@@ -13,6 +14,8 @@ export default function UserControlBar({ children }) {
 
     const router = useRouter()
 
+    const localeContext = useAppLocaleContext()
+
     useEffect(() => {
         if (localStorage.getItem('darkMode') === 'true') {
             setTheme(Themes.dark)
@@ -21,7 +24,6 @@ export default function UserControlBar({ children }) {
             setTheme(Themes.light)
             setDarkMode(false)
         }
-
     })
 
     const handleChange = () => {
@@ -35,14 +37,27 @@ export default function UserControlBar({ children }) {
             localStorage.setItem("darkMode", true)
         }
     }
+
+
+
+
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Grid container justifyContent="space-between" sx={{ p: '1em' }}>
-                <DarkModeSwitch handleChange={handleChange} active={darkMode} />
-                {
-                    !router.asPath.includes("/user/") && <UserAuth />
-                }
+                <Grid item >
+                    <Grid container direction={'row'}>
+                    <DarkModeSwitch handleChange={handleChange} active={darkMode} />
+                    <LanguageSwitcher />
+                    </Grid>
+                   
+                </Grid>
+                <Grid item>
+                    {
+                        !router.asPath.includes("/user/") && <UserAuth />
+                    }
+                </Grid>
             </Grid>
             {children}
         </ThemeProvider>

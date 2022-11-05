@@ -8,8 +8,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
   return (
     <SessionProvider session={session}>
+      <Alert />
       <AppLocaleContextProvider>
-        <Alert />
         <Component {...pageProps} />
       </AppLocaleContextProvider>
     </SessionProvider>

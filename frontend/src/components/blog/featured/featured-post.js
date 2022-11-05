@@ -8,13 +8,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import componentLocales from '../../componentLocales';
 import { useRouter } from 'next/router';
+import { height } from '@mui/system';
+import { useAppLocaleContext } from '../../../context/appLocale.context';
 
 const CMS_RESOURCES = process.env.CMS_RESOURCES
 
 
 
 function FeaturedPost(props) {
-    const { post, locale } = props;
+    const { post } = props;
+
+    const context = useAppLocaleContext()
 
     const router = useRouter()
 
@@ -23,10 +27,10 @@ function FeaturedPost(props) {
     const imgUrl = `${CMS_RESOURCES}${post.content.image?.formats?.small.url}`
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} >
             <CardActionArea component="a" href="#">
                 <Card sx={{ display: 'flex' }}>
-                    <CardContent sx={{ flex: 1 , width:'70%'}}>
+                    <CardContent sx={{ flex: 1 ,width: '70%' }}>
                         <Typography component="h2" variant="h5">
                             {post.content.title}
                         </Typography>
@@ -43,12 +47,12 @@ function FeaturedPost(props) {
                             {post.content.description}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">
-                            {locale[componentLocales.post.featured.label.more]}
+                            {context.locale[componentLocales.post.featured.label.more]}
                         </Typography>
                     </CardContent>
                     {<CardMedia
                         component="img"
-                        sx={{ width: '30%', height: 200, display: { xs: 'none', sm: 'block' } }}
+                        sx={{  width:'30%' , height: 200, display: { xs: 'none', sm: 'block' } }}
                         image={imgUrl}
                         alt={post.imageLabel}
                     />}

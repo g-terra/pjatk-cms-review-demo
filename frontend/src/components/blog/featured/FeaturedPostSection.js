@@ -4,6 +4,7 @@ import FeaturedPost from './featured-post';
 
 export default function FeaturedPostSection({ posts, locale }) {
 
+  console.log(JSON.stringify(locale));
 
   return <Stack spacing={2}>
     <Grid container spacing={4}>

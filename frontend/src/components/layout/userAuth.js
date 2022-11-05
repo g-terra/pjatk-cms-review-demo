@@ -16,7 +16,7 @@ export default function UserAuth() {
     const context = useAppLocaleContext()
 
     useEffect(()=>{
-        setLocale(context)
+        setLocale(context.locale)
     })
 
     if (session?.status === 'authenticated') return (

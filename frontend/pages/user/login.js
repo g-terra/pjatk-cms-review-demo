@@ -13,7 +13,6 @@ import { getCsrfToken, signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { alertService } from '../../src/services/alert.service';
 import Layout from '../../src/components/layout/layout';
-import layoutService from '../../src/services/layout.service';
 import componentLocales from '../../src/components/componentLocales';
 import { useAppLocaleContext } from '../../src/context/appLocale.context';
 
@@ -31,7 +30,7 @@ export default function SignIn({ csrfToken }) {
     const context = useAppLocaleContext()
 
     React.useEffect(() => {
-        setLocale(context)
+        setLocale(context.locale)
     })
 
 
@@ -109,11 +108,6 @@ export default function SignIn({ csrfToken }) {
                             {locale[componentLocales.button.signIn]}
                         </Button>
                         <Grid container>
-                            {/* <Grid item xs>
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
-          </Grid> */}
                             <Grid item>
                                 <Link onClick={() => { router.push(`/user/register`) }} variant="body2">
                                     {locale[componentLocales.label.dont_have_account]}

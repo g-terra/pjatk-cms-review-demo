@@ -1,12 +1,10 @@
-import { createTheme, CssBaseline, Grid, ThemeProvider } from '@mui/material';
 import { Container } from '@mui/system';
-import DarkModeSwitch from '../utils/darkModeSwitch.js';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Alert } from '../utils/alert.js';
 import Header from './header.js';
 import { LayoutContextProvider, useLayoutContext } from '../../context/layout.context.js';
 import UserControlBar from './userControlBar.js';
+import Footer from './footer.js';
 
 
 export default function Layout({ children }) {
@@ -23,12 +21,16 @@ export default function Layout({ children }) {
 export function Content({ children }) {
 
     const context = useLayoutContext()
-    const router = useRouter()
 
     const [header, setHeader] = useState({
         title: "",
         pages: [],
         membershipPages: []
+    })
+
+    const [footer, setFooter] = useState({
+        pages: [],
+        social: []
     })
 
     useEffect(() => {
@@ -42,18 +44,30 @@ export function Content({ children }) {
         }
     }, [context])
 
+
+    useEffect(() => {
+        if (context?.data?.footer) {
+            const data = {
+                pages: context.data.footer.pages,
+                social: context.data.footer.social,
+            }
+            setFooter(data)
+        }
+    }, [context])
+
     return (
         <Container maxWidth="lg">
             <UserControlBar>
                 <Header content={header} />
                 <Container sx={{
-                    minHeight: '100vh',
+                    minHeight: '60vh',
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',
                 }}>
                     {children}
                 </Container>
+                <Footer content={footer} />
             </UserControlBar>
         </Container>
     )

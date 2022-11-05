@@ -5,5 +5,16 @@
     "description": ""
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social.icon"
+    }
+  }
 }

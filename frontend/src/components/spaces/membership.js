@@ -12,7 +12,6 @@ export default function MembershipArea({ children }) {
 
     useEffect(() => {
         if (status === 'authenticated') {
-            console.log(session);
             userService.info({ token: session.jwt })
                 .then(res => {
                     setAllow(res.value.role.type === 'membership')

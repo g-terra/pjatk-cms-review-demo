@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_available_files",
+  "info": {
+    "singularName": "user-available-file",
+    "pluralName": "user-available-files",
+    "displayName": "user available file",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "file_paths": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::file-path.file-path",
+      "mappedBy": "user_available_file"
+    },
+    "file": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
