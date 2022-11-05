@@ -78,21 +78,35 @@ function _searchTree(nodeId, parent) {
 }
 
 
-const getFiles = async (filters , token) => {
+const getFiles = async (filters, page, token) => {
 
     const search = {
         locale: filters.locale,
+        pagination: {
+            page: page,
+            pageSize:12,
+        },
+        populate: '*',
         filters: {
-            $and: [
+            $or: [
                 {
                     file_paths: {
                         path: {
                             $startsWith: filters.path
                         }
                     },
-                    name: {
-                        $contains: filters.searchPattern
-                    }
+                    $or: [
+                        {
+                            name: {
+                                $contains: filters.searchPattern
+                            }
+                        },
+                        {
+                            description: {
+                                $contains: filters.searchPattern
+                            }
+                        }
+                    ]
                 }
             ]
 
@@ -108,7 +122,38 @@ const getFiles = async (filters , token) => {
 
     const response = await cms.provider.get(cms.endpoints.userAvailableFiles, search, authHeader)
 
-    return response.value
+
+    return { files: response.value.data.map(fileMapper), pagination: response.value.meta.pagination }
+
+}
+
+
+function fileMapper(item) {
+
+    const result = {
+        name: item.name,
+        description: item.description,
+        format: item.file[0].mime,
+        url: ''
+    }
+
+    if (result.format.includes('image')) {
+        result.thumbnail = item.file[0]?.formats.thumbnail.url
+
+        if (item.file[0]?.formats?.large) {
+            result.url = item.file[0].formats.large.url
+        } else if (item.file?.formats?.medium) {
+            result.url = item.file[0].formats.medium.url
+        } else {
+            result.url = item.file[0].formats.small.url
+        }
+    } else {
+        result.url = item.file[0].url
+    }
+
+    return result
+
+
 
 }
 

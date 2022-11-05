@@ -76,7 +76,7 @@ export default function categories({ handleSelectionChanged, path }) {
         <Box sx={{ flexGrow: 1, minWidth: 200, overflowY: 'auto' }} >
             <Box sx={{ mb: 1 }}>
                 <Button onClick={handleExpandClick}>
-                    {expanded.length === 0 ? locale[componentLocales.categories.expand] : locale[componentLocales.categories.collapse]}
+                    {expanded.length === 0 ? locale[componentLocales.files.categories.expand] : locale[componentLocales.files.categories.collapse]}
                 </Button>
             </Box>
             <TreeView

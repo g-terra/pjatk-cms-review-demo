@@ -25,9 +25,9 @@
         }
       }
     },
-    "user_available_file": {
+    "user_available_files": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::user-available-file.user-available-file",
       "inversedBy": "file_paths"
     }

@@ -18,9 +18,9 @@
   "attributes": {
     "file_paths": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::file-path.file-path",
-      "mappedBy": "user_available_file"
+      "mappedBy": "user_available_files"
     },
     "file": {
       "type": "media",

@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -29,7 +30,7 @@ export default function MembershipArea({ children }) {
     }
 
 
-    return allow ? (<div>{children} </div>) : <div><h1>Members only</h1> </div>
+    return allow ? (<Grid>{children} </Grid>) : <Grid><h1>Members only</h1> </Grid>
 
 
 

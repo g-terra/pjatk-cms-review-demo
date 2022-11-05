@@ -34,10 +34,16 @@ const componentLocales = {
             follow_us: "footer.label.follow_us"
         }
     },
-    categories:{
-        expand:'categories.expand',
-        collapse:'categories.collapse',
-        home:'categories.home'
+
+    files: {
+        categories: {
+            expand: 'categories.expand',
+            collapse: 'categories.collapse',
+            home: 'categories.home'
+        },
+        search:{
+            placeholder:'files.categories.home'
+        }
     }
 }
 

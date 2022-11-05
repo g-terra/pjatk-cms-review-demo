@@ -10,7 +10,8 @@ const endpoints = {
     landing:"/landing",
     filePaths:"/file-paths",
     userAvailableFiles:"/user-available-files",
-    locales:"/i18n/locales"
+    locales:"/i18n/locales",
+    post:"/posts"
 }
 
 const provider = strapiApi
