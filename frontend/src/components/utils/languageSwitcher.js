@@ -9,10 +9,9 @@ import { useEffect, useState } from 'react';
 export default function LanguageSwitcher() {
     const router = useRouter()
 
-    const { available } = useAppLocaleContext()
+    const available = ['en', 'pt-BR']
 
-
-    const [language, setLanguage] = useState('');
+    const [language, setLanguage] = useState('en');
 
 
     const handleChange = (event) => {
@@ -28,7 +27,6 @@ export default function LanguageSwitcher() {
     }, [router.locale])
 
 
-
     return (
         <Box >
              <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
@@ -36,10 +34,11 @@ export default function LanguageSwitcher() {
                     id="lang"
                     value={language}
                     onChange={handleChange}
+                    defaultValue = "en"
                 >
 
                     {
-                        available.map((a, i) => <MenuItem key={i} value={a}>{a}</MenuItem>)
+                        available.map((a, i) => <MenuItem key={a} value={a}>{a}</MenuItem>)
                     }
 
                 </Select>
