@@ -5,12 +5,14 @@ import Header from './header.js';
 import { LayoutContextProvider, useLayoutContext } from '../../context/layout.context.js';
 import UserControlBar from './userControlBar.js';
 import Footer from './footer.js';
+import { Alert } from '../utils/alert.js';
 
 
 export default function Layout({ children }) {
 
     return (
         <LayoutContextProvider>
+            <Alert />
             <Content>
                 {children}
             </Content>

@@ -52,7 +52,6 @@ export default function SignUp() {
     };
 
     return (
-        <Layout>
             <Container component="main" maxWidth="xs">
                 <Box
                     sx={{
@@ -123,6 +122,5 @@ export default function SignUp() {
                     </Box>
                 </Box>
             </Container>
-        </Layout>
     );
 }

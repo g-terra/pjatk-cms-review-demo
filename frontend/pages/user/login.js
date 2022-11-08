@@ -57,67 +57,65 @@ export default function SignIn({ csrfToken }) {
     };
 
     return (
-        <Layout>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        {locale[componentLocales.pages.signIn.title]}
-                    </Typography>
-                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Username / Email"
-                            name="email"
-                            autoFocus
-                            InputLabelProps={{ shrink: true }}
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    {locale[componentLocales.pages.signIn.title]}
+                </Typography>
+                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Username / Email"
+                        name="email"
+                        autoFocus
+                        InputLabelProps={{ shrink: true }}
 
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            InputLabelProps={{ shrink: true }}
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        InputLabelProps={{ shrink: true }}
 
-                        />
+                    />
 
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        >
-                            {locale[componentLocales.button.signIn]}
-                        </Button>
-                        <Grid container>
-                            <Grid item>
-                                <Link onClick={() => { router.push(`/user/register`) }} variant="body2">
-                                    {locale[componentLocales.label.dont_have_account]}
-                                </Link>
-                            </Grid>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        {locale[componentLocales.button.signIn]}
+                    </Button>
+                    <Grid container>
+                        <Grid item>
+                            <Link onClick={() => { router.push(`/user/register`) }} variant="body2">
+                                {locale[componentLocales.label.dont_have_account]}
+                            </Link>
                         </Grid>
-                    </Box>
+                    </Grid>
                 </Box>
-            </Container>
-        </Layout>
+            </Box>
+        </Container>
 
     );
 }

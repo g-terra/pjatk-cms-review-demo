@@ -23,7 +23,7 @@ const Post = () => {
         setPage(value)
     };
 
-    return <Layout>
+    return (
         <Grid container spacing={2}>
             <Grid item xs={3} md={3}>
                 <SearchBar value={searchPattern} handleChange={handleSearchChanged}></SearchBar>
@@ -36,7 +36,9 @@ const Post = () => {
                 </Grid >
             </Grid>
         </Grid>
-    </Layout>
+    )
+
+
 }
 
 export default Post

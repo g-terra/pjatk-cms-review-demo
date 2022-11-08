@@ -14,11 +14,11 @@ const Post = ({ pid, post }) => {
   const imgUrl = `${CMS_RESOURCES}${post.image.formats.large.url}`
 
   return (
-    <Layout>
+    <>
       <Typography variant='h4'>{post.title}</Typography>
       <Paper
         sx={{
-          marginTop:3,
+          marginTop: 3,
           position: 'relative',
           backgroundColor: 'grey.800',
           color: '#fff',
@@ -33,7 +33,7 @@ const Post = ({ pid, post }) => {
         {<img style={{ display: 'none' }} src={imgUrl} alt={post.slug} />}
       </Paper>
       <ReactMarkdown children={post.content}></ReactMarkdown>
-    </Layout>
+    </>
   )
 }
 
@@ -45,7 +45,7 @@ export async function getServerSideProps(context) {
 
   console.log(pid);
 
-  const { data } = await postService.getBySlug(pid,context.locale)
+  const { data } = await postService.getBySlug(pid, context.locale)
 
   const post = data[0]
 
