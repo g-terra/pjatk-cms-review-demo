@@ -8,9 +8,9 @@ import MembershipArea from "../src/components/spaces/membership";
 
 export default function files() {
 
-    return (<Layout>
+    return (
         <MembershipArea>
             <FileRepository />
         </MembershipArea>
-    </Layout>)
+    )
 }

@@ -58,19 +58,19 @@ export function Content({ children }) {
     }, [context])
 
     return (
-        <Container maxWidth="lg">
-            <UserControlBar>
-                <Header content={header} />
-                <Container sx={{
-                    minHeight: '60vh',
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                }}>
-                    {children}
-                </Container>
-                <Footer content={footer} />
-            </UserControlBar>
-        </Container>
+            <Container maxWidth="lg">
+                <UserControlBar>
+                    <Header content={header} />
+                    <Container sx={{
+                        minHeight: '60vh',
+                        flex: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}>
+                        {children}
+                    </Container>
+                    <Footer content={footer} />
+                </UserControlBar>
+            </Container>
     )
 }

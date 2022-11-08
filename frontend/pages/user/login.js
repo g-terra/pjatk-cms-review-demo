@@ -20,6 +20,8 @@ export default function SignIn({ csrfToken }) {
 
     const session = useSession();
     const router = useRouter();
+    const [token, setToken] = React.useState(null)
+
 
     if (session?.status === 'authenticated') {
         router.push('/')
@@ -38,17 +40,21 @@ export default function SignIn({ csrfToken }) {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
+       
+
+
         await signIn('credentials', {
             redirect: false,
             email: data.get('email'),
             password: data.get('password'),
+            Token: token,
             csrfToken: data.get('csrfToken'),
             callbackUrl: `${window.location.origin}`,
         }).then(({ ok }) => {
             if (ok) {
                 router.push("/")
             } else {
-                alertService.error(`Credentials do not match!`);
+                (`Credentials do not match!`);
             }
         }).catch(e => {
             alertService.error(e);
@@ -106,6 +112,7 @@ export default function SignIn({ csrfToken }) {
                     >
                         {locale[componentLocales.button.signIn]}
                     </Button>
+            
                     <Grid container>
                         <Grid item>
                             <Link onClick={() => { router.push(`/user/register`) }} variant="body2">

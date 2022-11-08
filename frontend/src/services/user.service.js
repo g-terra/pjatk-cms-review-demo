@@ -2,29 +2,29 @@ import cms from "./cms.service"
 
 const authenticate = async ({ email, password }) => {
 
-    const response = await cms.provider.post(cms.endpoints.auth,{
-        identifier:email,
+    const response = await cms.provider.post(cms.endpoints.auth, {
+        identifier: email,
         password
     })
-
-    console.log("auth response:" + JSON.stringify(response, null, 2));
 
 
     return response
 }
 
-const register = async ({ username, email, password }) => {
+const register = async ({ username, email, password, token }) => {
+
 
     const response = await cms.provider.post(cms.endpoints.register, {
         username,
         email,
         password,
+        token
     });
 
-
-    console.log(response);
-
     return response;
+
+
+
 }
 
 
@@ -34,20 +34,20 @@ const info = async ({ token }) => {
         populate: "role"
     }
 
-    const authHeader ={
+    const authHeader = {
         headers: {
             Authorization:
-              `Bearer ${token}`,
-          },
+                `Bearer ${token}`,
+        },
     }
 
-    const response = await cms.provider.get(cms.endpoints.info, search , authHeader);
+    const response = await cms.provider.get(cms.endpoints.info, search, authHeader);
 
     return response;
 }
 
-const userService ={
-    authenticate, register , info
+const userService = {
+    authenticate, register, info
 }
 
 export default userService

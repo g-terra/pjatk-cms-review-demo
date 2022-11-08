@@ -5365,6 +5365,11 @@
     "inherits" "^2.0.3"
     "minimalistic-assert" "^1.0.1"
 
+"hcaptcha@^0.1.1":
+  "integrity" "sha512-iMrDmH2VpIEKOrcKWidVjI89FdDKTEdZ7PfPWkP27sTazIIkob8YfdY2ezaufAnWBiUUcvzsn0qF+dyXtBH2Vw=="
+  "resolved" "https://registry.npmjs.org/hcaptcha/-/hcaptcha-0.1.1.tgz"
+  "version" "0.1.1"
+
 "he@^1.2.0":
   "integrity" "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw=="
   "resolved" "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
