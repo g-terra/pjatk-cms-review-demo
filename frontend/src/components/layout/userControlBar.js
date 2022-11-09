@@ -40,8 +40,6 @@ export default function UserControlBar({ children }) {
 
 
 
-
-
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />

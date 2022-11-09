@@ -12,7 +12,6 @@ export default function Layout({ children }) {
 
     return (
         <LayoutContextProvider>
-            <Alert />
             <Content>
                 {children}
             </Content>

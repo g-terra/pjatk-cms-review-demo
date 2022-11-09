@@ -24,18 +24,20 @@ const Post = () => {
     };
 
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={3} md={3}>
-                <SearchBar value={searchPattern} handleChange={handleSearchChanged}></SearchBar>
-            </Grid>
-            <Grid item sx={3} md={9} >
-                <Grid container spacing={2} padding={4} height={'55vh'}>
+        <Layout>
+            <Grid container spacing={2}>
+                <Grid item xs={3} md={3}>
+                    <SearchBar value={searchPattern} handleChange={handleSearchChanged}></SearchBar>
                 </Grid>
-                < Grid container alignItems={'right'} justifyContent={"right"} >
-                    <Pagination count={pagination.pageCount} page={page} onChange={handlePageChange} />
-                </Grid >
+                <Grid item sx={3} md={9} >
+                    <Grid container spacing={2} padding={4} height={'55vh'}>
+                    </Grid>
+                    < Grid container alignItems={'right'} justifyContent={"right"} >
+                        <Pagination count={pagination.pageCount} page={page} onChange={handlePageChange} />
+                    </Grid >
+                </Grid>
             </Grid>
-        </Grid>
+        </Layout>
     )
 
 

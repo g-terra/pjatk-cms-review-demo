@@ -1,6 +1,6 @@
 import { SessionProvider } from 'next-auth/react'
 import Layout from '../src/components/layout/layout'
-import { Alert } from '../src/components/utils/alert'
+import AlertWrapper from '../src/components/utils/alertWrapper'
 import { AppLocaleContextProvider } from '../src/context/appLocale.context'
 import { LayoutContextProvider, LocaleContext } from '../src/context/layout.context'
 import '../styles/globals.css'
@@ -11,9 +11,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <>
       <SessionProvider session={session}>
         <AppLocaleContextProvider>
-          <Layout>
+          <AlertWrapper>
             <Component {...pageProps} />
-          </Layout>
+          </AlertWrapper>
         </AppLocaleContextProvider>
       </SessionProvider>
     </>

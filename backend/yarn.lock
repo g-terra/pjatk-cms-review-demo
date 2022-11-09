@@ -1715,7 +1715,7 @@
     "plop" "2.7.6"
     "pluralize" "8.0.0"
 
-"@strapi/helper-plugin@4.4.5":
+"@strapi/helper-plugin@^4.0.7", "@strapi/helper-plugin@4.4.5":
   "integrity" "sha512-xGsyz1PfGtk7cQSLkrEtwD5VM/rJwjMtSk06fn1yrVMRyPYi15bqfEZ3ym8k1Eo5x2BgtHSVexX19sqvfItSxg=="
   "resolved" "https://registry.npmjs.org/@strapi/helper-plugin/-/helper-plugin-4.4.5.tgz"
   "version" "4.4.5"
@@ -1953,7 +1953,7 @@
     "prettier" "2.7.1"
     "typescript" "4.6.2"
 
-"@strapi/utils@^4.0.0", "@strapi/utils@^4.0.8", "@strapi/utils@4.4.5":
+"@strapi/utils@^4.0.0", "@strapi/utils@^4.0.7", "@strapi/utils@^4.0.8", "@strapi/utils@4.4.5":
   "integrity" "sha512-JloHkrDJgn0ddIwI3HSMFxgDe/fD6m+khq8XIrN8ixOxJSYS5jlWysGQleSdbjzp4s3ADHIL+ovAeBuIiwd3Rw=="
   "resolved" "https://registry.npmjs.org/@strapi/utils/-/utils-4.4.5.tgz"
   "version" "4.4.5"
@@ -8235,7 +8235,7 @@
   dependencies:
     "prop-types" "^15.5.8"
 
-"react-intl@5.25.1":
+"react-intl@^5.24.6", "react-intl@5.25.1":
   "integrity" "sha512-pkjdQDvpJROoXLMltkP/5mZb0/XqrqLoPGKUCfbdkP8m6U9xbK40K51Wu+a4aQqTEvEK5lHBk0fWzUV72SJ3Hg=="
   "resolved" "https://registry.npmjs.org/react-intl/-/react-intl-5.25.1.tgz"
   "version" "5.25.1"
@@ -8261,7 +8261,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-query@3.24.3":
+"react-query@^3.24.3", "react-query@3.24.3":
   "integrity" "sha512-JipKpn7XoDVvRWwXWXKSJU5SbNJKqspx9IRBntaQt1EQOBXe9314Z/8cV9YXXbZIhzrHAetT3X7tRClZaYk98g=="
   "resolved" "https://registry.npmjs.org/react-query/-/react-query-3.24.3.tgz"
   "version" "3.24.3"
@@ -9380,6 +9380,11 @@
   dependencies:
     "fuzzysort" "2.0.1"
     "transliteration" "2.3.5"
+
+"strapi-plugin-publisher@^1.1.4":
+  "integrity" "sha512-aP+4nXCFcCcLdv74+NeG2RYlxj44Zqiye1T8cHt6RB6/kPPPSeJrpmPtvrLX4tXUsF1korsREUHCpkR/htpysg=="
+  "resolved" "https://registry.npmjs.org/strapi-plugin-publisher/-/strapi-plugin-publisher-1.1.4.tgz"
+  "version" "1.1.4"
 
 "strapi-plugin-transformer@^2.1.0":
   "integrity" "sha512-Q4StiLZa495DU+PQMox57i5PJd4T5mCxaGEXh8DtMIkwHdI+Jh47IvzHpeVEAVy5quJGGxhUJ4S7l9elIXej7Q=="

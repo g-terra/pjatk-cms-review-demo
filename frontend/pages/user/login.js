@@ -54,7 +54,7 @@ export default function SignIn({ csrfToken }) {
             if (ok) {
                 router.push("/")
             } else {
-                (`Credentials do not match!`);
+                alertService.error(`Credentials do not match!`);
             }
         }).catch(e => {
             alertService.error(e);
@@ -63,7 +63,8 @@ export default function SignIn({ csrfToken }) {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Layout>
+            <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
                 sx={{
@@ -123,6 +124,7 @@ export default function SignIn({ csrfToken }) {
                 </Box>
             </Box>
         </Container>
+        </Layout>
 
     );
 }

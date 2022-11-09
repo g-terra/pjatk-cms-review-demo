@@ -1,9 +1,9 @@
 import cms from "./cms.service"
 
-const getBySlug = async (slug,locale) => {
+const getBySlug = async (slug, locale) => {
 
     const search = {
-        locale:locale,
+        locale: locale,
         populate: '*',
         filters: {
             slug: {
@@ -15,8 +15,13 @@ const getBySlug = async (slug,locale) => {
 
     const response = await cms.provider.get(cms.endpoints.post, search)
 
-    return response.value
+    console.log("count?" + response.value.data.length)
 
+    if (response.value.data.length > 0) {
+        return response.value
+    } else {
+        throw new Error("Post not found")
+    }
 }
 
 const postService = {

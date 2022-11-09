@@ -13,9 +13,9 @@ import componentLocales from '../../src/components/componentLocales';
 import { useSession } from 'next-auth/react';
 import { useAppLocaleContext } from '../../src/context/appLocale.context';
 import { useRouter } from 'next/router';
-import { Link } from '@mui/material';
+import { Link, useTheme } from '@mui/material';
 import HCaptcha from '@hcaptcha/react-hcaptcha'
-import { useTheme } from '@emotion/react';
+import Layout from '../../src/components/layout/layout';
 
 
 
@@ -69,88 +69,90 @@ export default function SignUp({ sitekey }) {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    {locale[componentLocales.pages.signUp.title]}
-                </Typography>
-                <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }} autoComplete="off">
-                    <Grid container spacing={2} marginTop={2}>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                fullWidth
-                                id="username"
-                                label="username"
-                                name="username"
-                                type="text"
-                            />
+        <Layout>
+            <Container component="main" maxWidth="xs">
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        {locale[componentLocales.pages.signUp.title]}
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }} autoComplete="off">
+                        <Grid container spacing={2} marginTop={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="username"
+                                    label="username"
+                                    name="username"
+                                    type="text"
+                                />
 
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                type="text"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                            />
-
-                        </Grid>
-                        <Grid container alignItems={'center'} justifyContent={'center'} xs={12}>
-                            <Grid item marginTop={3}>
-                                <HCaptcha
-                                    sitekey={sitekey}
-                                    onVerify={setToken}
-                                    onError={() => setToken(null)}
-                                    onExpire={() => setToken(null)}
-                                    theme={theme.palette.mode === 'dark' ? 'dark' : 'light'}
-                                    ref={captchaRef}
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    type="text"
                                 />
                             </Grid>
-                        </Grid>
-                    </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                    >
-                        {locale['button.signup']}
-                    </Button>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                />
 
-                    <Grid container justifyContent="flex-end">
-                        <Grid item>
-                            <Link onClick={() => { router.push('/user/login') }} variant="body2">
-                                {locale['label.already_have_account']}
-                            </Link>
+                            </Grid>
+                            <Grid container alignItems={'center'} justifyContent={'center'} xs={12}>
+                                <Grid item marginTop={3}>
+                                    <HCaptcha
+                                        sitekey={sitekey}
+                                        onVerify={setToken}
+                                        onError={() => setToken(null)}
+                                        onExpire={() => setToken(null)}
+                                        theme={theme.palette.mode === 'dark' ? 'dark' : 'light'}
+                                        ref={captchaRef}
+                                    />
+                                </Grid>
+                            </Grid>
                         </Grid>
-                    </Grid>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            {locale['button.signup']}
+                        </Button>
+
+                        <Grid container justifyContent="flex-end">
+                            <Grid item>
+                                <Link onClick={() => { router.push('/user/login') }} variant="body2">
+                                    {locale['label.already_have_account']}
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Box>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+        </Layout>
     );
 }
 

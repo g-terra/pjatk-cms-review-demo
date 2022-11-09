@@ -9,47 +9,55 @@ const CMS_RESOURCES = process.env.CMS_RESOURCES
 
 
 const Post = ({ pid, post }) => {
-  const router = useRouter()
+    const router = useRouter()
 
-  const imgUrl = `${CMS_RESOURCES}${post.image.formats.large.url}`
+    const imgUrl = `${CMS_RESOURCES}${post.image.formats.large.url}`
 
-  return (
-    <>
-      <Typography variant='h4'>{post.title}</Typography>
-      <Paper
-        sx={{
-          marginTop: 3,
-          position: 'relative',
-          backgroundColor: 'grey.800',
-          color: '#fff',
-          mb: 4,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundImage: `url(${imgUrl})`,
-          height: 300
-        }}
-      >
-        {<img style={{ display: 'none' }} src={imgUrl} alt={post.slug} />}
-      </Paper>
-      <ReactMarkdown children={post.content}></ReactMarkdown>
-    </>
-  )
+    return (
+        <Layout>
+            <Typography variant='h4'>{post.title}</Typography>
+            <Paper
+                sx={{
+                    marginTop: 3,
+                    position: 'relative',
+                    backgroundColor: 'grey.800',
+                    color: '#fff',
+                    mb: 4,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    backgroundImage: `url(${imgUrl})`,
+                    height: 300
+                }}
+            >
+                {<img style={{ display: 'none' }} src={imgUrl} alt={post.slug} />}
+            </Paper>
+            <ReactMarkdown children={post.content}></ReactMarkdown>
+        </Layout>
+    )
 }
 
 export default Post
 
 export async function getServerSideProps(context) {
 
-  const { pid } = context.query;
+    try {
+        const { pid } = context.query;
 
-  console.log(pid);
+        console.log(pid);
 
-  const { data } = await postService.getBySlug(pid, context.locale)
+        const { data } = await postService.getBySlug(pid, context.locale)
 
-  const post = data[0]
+        const post = data[0]
 
-  return {
-    props: { pid, post },
-  };
+        return {
+            props: { pid, post },
+        };
+    } catch (error) {
+
+        return {
+            notFound: true,
+        }
+
+    }
 }

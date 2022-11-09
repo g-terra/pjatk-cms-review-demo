@@ -10,6 +10,9 @@ module.exports = ({ env }) => ({
             }
         }
     },
+    publisher: {
+        enabled: true,
+    },
     "content-versioning": {
         enabled: true,
     },

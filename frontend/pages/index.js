@@ -13,10 +13,10 @@ export default function Home({ data }) {
 
   return (
 
-    <>
+    <Layout>
       <MainFeaturedPost post={data.latest}></MainFeaturedPost>
       <FeaturedPostSection posts={data.featured}></FeaturedPostSection>
-    </>
+    </Layout>
 
   )
 }
