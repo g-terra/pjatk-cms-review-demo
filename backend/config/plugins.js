@@ -80,7 +80,6 @@ module.exports = ({ env }) => ({
                 contentTypes: [
                     // list of Content-Types UID to cache
                     // "api::post.post",
-                    "api:component:component",
 
                 ],
             },
