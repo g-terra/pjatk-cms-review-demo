@@ -79,8 +79,22 @@ module.exports = ({ env }) => ({
             strategy: {
                 contentTypes: [
                     // list of Content-Types UID to cache
-                    // "api::post.post",
-                    "api:component:component",
+                    "api::post.post",
+                    // "api::component.component",
+                    // "api::component-attribute.component-attribute"
+                    {
+                        contentType: "api::component.component",
+                        routes: /* @type {CacheRouteConfig[]} */ [
+                          {
+                            path: '/api/component', // note that we set the /api prefix here
+                            method: 'GET', // can be omitted, defaults to GET
+                            hitpass: false, // overrides default hitpass for this route
+                            // keys: /* @type {CacheKeysConfig} */ {
+                            //   useQueryParams: ['locale'], // use only locale query param for keys
+                            // }
+                          },
+                        ],
+                      },
 
                 ],
             },
@@ -88,4 +102,3 @@ module.exports = ({ env }) => ({
     },
 
 });
-

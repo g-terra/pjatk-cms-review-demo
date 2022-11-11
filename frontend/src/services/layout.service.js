@@ -62,12 +62,21 @@ const getCoreComponentLocale = async (locale) => {
 
     const response = await cms.provider.get(cms.endpoints.components, search)
 
+
     if (response.status !== 200) return response
 
-    return response.value.data.reduce(function (map, obj) {
-        map[obj.key] = obj.component_attributes[0].display_text;
+    console.log(JSON.stringify(response.value.data, null, 2)); 
+
+
+    const result = response.value.data.reduce(function (map, obj) {
+        map[obj.attributes.key] = obj.attributes.component_attributes.data[0].attributes.display_text;
         return map;
     }, {});
+
+
+
+
+    return result
 
 }
 

@@ -33,6 +33,7 @@ export async function getServerSideProps(context) {
 
   const landing = await landingService.get(context.locale);
 
+  console.log("landing", JSON.stringify(landing));
   return {
     props: { data: landing.data }
   }

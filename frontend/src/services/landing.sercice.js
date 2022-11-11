@@ -50,6 +50,7 @@ const get = async (locale) => {
 
     const response = await cms.provider.get(cms.endpoints.landing, search)
 
+
     return response.value
 
 }

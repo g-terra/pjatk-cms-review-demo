@@ -1,7 +1,7 @@
 import axios from "axios";
 import QueryString from "qs";
 
-const cmsProxy = process.env.CMS_PROXY
+const cmsProxy = "http://localhost:1337/api"
 
 const get = async (resource, search , headers) => {
 
