@@ -11,7 +11,7 @@ import StyledTreeItem from '../utils/tree-view/treeItem';
 import { useAppLocaleContext } from '../../context/appLocale.context';
 import componentLocales from '../componentLocales';
 
-export default function categories({ handleSelectionChanged, path }) {
+export default function Categories({ handleSelectionChanged, path }) {
     const [expanded, setExpanded] = React.useState([]);
     const [selected, setSelected] = React.useState([]);
     const [categories, setCategories] = React.useState({ id: -1, name: '', subs: [], search: (id, parent) => "" })

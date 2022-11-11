@@ -18,9 +18,12 @@
     "@strapi/strapi": "4.4.5",
     "better-sqlite3": "7.4.6",
     "hcaptcha": "^0.1.1",
+    "strapi-middleware-cache": "^2.1.8",
     "strapi-plugin-fuzzy-search": "^1.10.2",
     "strapi-plugin-publisher": "^1.1.4",
-    "strapi-plugin-transformer": "^2.1.0"
+    "strapi-plugin-rest-cache": "^4.2.4",
+    "strapi-plugin-transformer": "^2.1.0",
+    "strapi-provider-rest-cache-memory": "^4.2.4"
   },
   "author": {
     "name": "A Strapi developer"
