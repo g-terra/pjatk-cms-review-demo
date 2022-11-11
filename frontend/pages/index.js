@@ -11,11 +11,19 @@ import layoutService from '../src/services/layout.service';
 
 export default function Home({ data }) {
 
+  const router = useRouter();
+
   return (
 
     <Layout>
       <MainFeaturedPost post={data.latest}></MainFeaturedPost>
       <FeaturedPostSection posts={data.featured}></FeaturedPostSection>
+      <Button onClick={
+        () => {
+          alertService.success('Registration successful', { keepAfterRouteChange: true });
+
+        }
+      }>test</Button>
     </Layout>
 
   )

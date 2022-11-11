@@ -13,7 +13,7 @@ const getBySlug = async (slug, locale) => {
     }
 
 
-    const response = await cms.provider.get(cms.endpoints.post, search)
+    const response = await cms.provider.get(cms.endpoints.posts, search)
 
     console.log("count?" + response.value.data.length)
 
@@ -24,8 +24,21 @@ const getBySlug = async (slug, locale) => {
     }
 }
 
+const getById = async (id) => {
+
+    console.log("id:" + id);
+    const response = await cms.provider.get(`${cms.endpoints.posts}/${id}`)
+
+    if (response.value) {
+        return response.value
+    } else {
+        throw new Error("Post not found")
+    }
+
+}
+
 const postService = {
-    getBySlug
+    getBySlug, getById
 }
 
 export default postService

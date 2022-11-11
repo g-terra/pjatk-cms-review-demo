@@ -11,7 +11,8 @@ const endpoints = {
     filePaths:"/file-paths",
     userAvailableFiles:"/user-available-files",
     locales:"/i18n/locales",
-    post:"/posts"
+    posts:"/posts",
+    post:"/post"
 }
 
 const provider = strapiApi

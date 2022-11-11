@@ -134,6 +134,7 @@ function fileMapper(item) {
         name: item.name,
         description: item.description,
         format: item.file[0].mime,
+        actualName: item.file[0].name,
         url: ''
     }
 
